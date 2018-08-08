@@ -1,0 +1,15 @@
+{
+  "short_name": "My Aspen",
+  "name": "Aspen Indoor Skiing - My Aspen",
+  "icons": [
+    {
+      "src": "apple-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#0E3149",
+  "background_color": "#ffffff"
+}
