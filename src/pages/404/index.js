@@ -1,4 +1,4 @@
-import React from 'react';
+import React from '../../../node_modules/@types/react/index';
 import Styled from './style';
 
 const FourOhFour = ({ history: { push }, ...rest }) => (

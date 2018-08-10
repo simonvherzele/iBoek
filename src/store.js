@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import qhistory from 'qhistory';
-import { stringify, parse } from 'qs';
+import { stringify, parse } from 'query-string';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
@@ -39,5 +39,5 @@ const composedEnhancers = compose(
   applyMiddleware(...middleware),
   ...enhancers
 );
-export const store = createStore(persistedReducer, initialState, composedEnhancers);
+export const store = createStore(persistedReducer, initialState, composedEnhancers, applyMiddleware(thunk));
 export const persistor = persistStore(store);

@@ -1,31 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from 'modules/unsplash/actions';
 import Single from '../Single/index';
 import Styled from './style';
-import Api from 'utils/Api';
 
 class Photos extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      pictures: [],
-    };
-  }
+  state = {
+    pictures: [],
+    selection: 'default',
+  };
 
   async componentDidMount() {
     try {
-      const response = await Api.get('/collections/573226/photos');
-      const list = response.data.map(pic => {
-        console.log(pic);
-        return (
-          <Single
-            name={pic.user.username}
-            date={pic.created_at}
-            url={pic.urls.regular}
-            avatar={pic.user.profile_image.medium}
-            key={pic.id}
-          />
-        );
-      });
+      await this.props.fetchPictures(this.state.selection);
+      const list = this.props.pictures.data.map(pic => (
+        <Single
+          name={pic.user.username}
+          date={pic.created_at}
+          url={pic.urls.regular}
+          avatar={pic.user.profile_image.medium}
+          key={pic.id}
+        />
+      ));
       this.setState({ pictures: list });
     } catch (error) {
       console.log(error);
@@ -33,6 +29,7 @@ class Photos extends React.Component {
   }
 
   render() {
+    console.log('rendeuuur');
     return (
       <Styled>
         <div className="photos">
@@ -44,4 +41,9 @@ class Photos extends React.Component {
   }
 }
 
-export default Photos;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  actions
+)(Photos);
