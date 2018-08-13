@@ -1,14 +1,17 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navigation from 'components/Nav/index';
-import Photos from 'components/Photos/index';
-import Footer from 'components/Footer/index';
+import Layout from './components/Layout';
+import Profile from './components/Profile';
 
 const App = () => (
   <div className="app-root">
-    <Navigation />
-    <Photos />
-    <Footer />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Layout} />
+        <Route exact path="/profile" component={Profile} />
+      </Switch>
+    </BrowserRouter>
   </div>
 );
 export default App;

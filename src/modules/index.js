@@ -1,15 +1,10 @@
-import { FETCH_PICTURES } from './unsplash/constants';
+import { combineReducers } from 'redux';
 
-const initialState = {
-  pictures: [],
-  selection: '',
-};
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_PICTURES:
-      return { ...state, pictures: action.payload };
-    default:
-      return state;
-  }
-};
+import unsplashReducer from './unsplash/reducer';
+import likeReducer from './likes/reducer';
+
+const rootReducer = combineReducers({
+  unsplash: unsplashReducer,
+  like: likeReducer,
+});
 export default rootReducer;

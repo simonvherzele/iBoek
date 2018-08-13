@@ -1,1 +1,1 @@
-export const FETCH_PICTURES = 'FETCH_PICTURES';
+export const SET_PICTURES = '@unsplash/SET_PICTURES';

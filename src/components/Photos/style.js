@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const Styled = styled.div`
+  max-width: 800px;
+  margin: auto;
+
   .load {
     background-color: #ef5959;
     color: white;
