@@ -23,14 +23,7 @@ class Photos extends React.Component {
       <Styled>
         <div className="photos">
           {this.props.images.slice(0, this.state.limit).map(image => (
-            <Single
-              date={image.created_at}
-              name={image.user.username}
-              avatar={image.user.profile_image.medium}
-              url={image.urls.regular}
-              key={image.id}
-              id={image.id}
-            />
+            <Single image={image} />
           ))}
           <button className="load" onClick={this.loadMore}>
             Meer Laden

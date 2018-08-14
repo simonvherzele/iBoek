@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
-import * as actions from 'modules/likes/actions';
+import { addLike } from 'modules/like/actions';
 import Single from '../components';
 
-const mapStateToProps = state => ({
-  likes: state.likes,
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+  like: image => {
+    dispatch(addLike(image));
+  },
 });
 
 export default connect(
   mapStateToProps,
-  actions
+  mapDispatchToProps
 )(Single);

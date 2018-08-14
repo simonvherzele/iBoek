@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import unsplashReducer from './unsplash/reducer';
-import likeReducer from './likes/reducer';
+import likeReducer from './like/reducer';
 
 const rootReducer = combineReducers({
   unsplash: unsplashReducer,

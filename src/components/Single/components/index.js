@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Styled from '../style';
 
@@ -12,31 +11,33 @@ class Single extends React.Component {
   }
 
   handleDblClick() {
-    const imageId = this.props.id;
-    console.log(imageId);
+    const likedImage = this.props.image;
     this.setState({
       testclass: 'active',
     });
-    this.props.like(imageId);
+    this.props.like(likedImage);
   }
 
+  // key={image.id}
+  // id={image.id}
+
   render() {
-    const time = `${this.props.date}`;
+    const time = `${this.props.image.created_at}`;
     const classes = classnames('img', `${this.state.testclass}`);
     return (
       <Styled>
         <div className="post">
           <div className="header">
             <div className="info">
-              <h1>{this.props.name}</h1>
+              <h1>{this.props.image.user.username}</h1>
               <h2>{moment(time).format('DD/MM/YYYY')}</h2>
             </div>
             <div className="ava">
-              <img src={this.props.avatar} alt="" />
+              <img src={this.props.image.user.profile_image.medium} alt="" />
             </div>
           </div>
           <div className={classes} onDoubleClick={this.handleDblClick}>
-            <img src={this.props.url} alt="" />
+            <img src={this.props.image.urls.regular} alt="" />
             <div className="after">
               <span className="helper" />
               <img src="/images/like.png" alt="" />
@@ -47,14 +48,5 @@ class Single extends React.Component {
     );
   }
 }
-
-Single.propTypes = {
-  name: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  like: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-};
 
 export default Single;
