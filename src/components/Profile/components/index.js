@@ -9,7 +9,7 @@ class Profile extends React.Component {
       <div>
         <Nav />
         {this.props.image.map(image => (
-          <Single image={image} />
+          <Single image={image} key={image.id} />
         ))}
         <Footer />
       </div>
