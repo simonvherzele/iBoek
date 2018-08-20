@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Logo from 'components/Logo';
 import Avatar from 'components/Avatar';
 import Styled from '../style';
@@ -19,8 +20,12 @@ class Navigation extends React.Component {
       <Styled>
         <nav>
           <div className="topnav">
-            <Logo />
-            <Avatar />
+            <Link to="/">
+              <Logo />
+            </Link>
+            <Link to="/profile">
+              <Avatar />
+            </Link>
           </div>
           <div className="lownav">
             <select onChange={e => this.handleChange(e)}>

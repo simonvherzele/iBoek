@@ -11,11 +11,11 @@ class Single extends React.Component {
   }
 
   handleDblClick() {
-    const likedImage = this.props.image;
+    const image = this.props.image;
     this.setState({
       testclass: 'active',
     });
-    this.props.like(likedImage);
+    this.props.like(image);
   }
 
   // key={image.id}
