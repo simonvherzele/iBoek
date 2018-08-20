@@ -13,7 +13,11 @@ const likeReducer = (state = initialState, action) => {
       if (status === false) {
         return { likes: [...state.likes, action.payload] };
       }
-      return { likes: [...state.likes] };
+      const array = state.likes;
+      const index = array.indexOf(action.payload);
+      array.splice(index, 1);
+      console.log(array);
+      return { likes: array };
     }
 
     default:
